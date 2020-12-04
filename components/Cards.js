@@ -25,18 +25,25 @@
 axios.get('https://lambda-times-api.herokuapp.com/articles')
   .then(res => {
     const d = res.data.articles
-    document.addEventListener('click', e => {
-      let bb = e.target.innerHTML;
+    console.log(d)
 
-      for(const articles in d){
+    for(const articles in d){
+      const arrOfArticles = d[articles]
+
+      document.addEventListener('click', e => {
+        let bb = e.target.innerHTML;
 
         if(bb === articles){
-          const arrOfArticles = d[articles]
           document.querySelector('.cards-container').innerHTML = ''
           createArticle(arrOfArticles)
         }
-      }
-    })
+
+      })
+
+      createArticle(arrOfArticles)
+
+    }
+
 
   })
   .catch(err => {
@@ -67,8 +74,6 @@ function createArticle(arr){
 
   document.querySelector('.cards-container').innerHTML += html;
   document.querySelector('.card').addEventListener('click', e => {
-    // console.log(e.target.children[0].innerText)
-
     console.log(e.target.parentNode.children[0].innerText)
   })
 }
