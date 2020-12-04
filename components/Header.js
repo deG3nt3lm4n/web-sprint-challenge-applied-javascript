@@ -11,4 +11,18 @@
 // Use your function to create a header
 // and append it to the DOM inside the div.header-container
 
-function Header() {}
+function Header() {
+  return (
+      `
+      <div class="header">
+        <span class="date">March 28, 2020</span>
+        <h1>Lambda Times</h1>
+        <span class="temp">98°</span>
+      </div>
+    `
+  )
+
+
+}
+
+document.querySelector('div.header-container').innerHTML = Header()
